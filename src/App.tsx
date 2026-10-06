@@ -17,13 +17,13 @@ const Heading1 = styled.h1`
 export default function App(){
 
   // useState Hook to store Data.
-  const [data, setData] = useState<Char[]>([]);
+  const [data, setData] = useState<any>([]);
 
   // useEffect Hook for error handling and re-rendering.
   useEffect(() => {
     async function fetchData(): Promise<void> {
       const rawData = await fetch("https://rickandmortyapi.com/api/character");
-      const {results} : {results: Char[]} = await rawData.json();
+      const {results} : {results: any} = await rawData.json();
       setData(results);
     }
     fetchData()

@@ -26,29 +26,29 @@ const StyledImage = styled.img`
     height: auto;
 `;
 
-const CharInfo = styled.div<{ status: string }>`
+const CharInfo = styled.div`
     display: flex;
     flex-direction: column;
     text-align: left;
 `;
 
-const StyleHeader = styled.h1`
+const StyleHeader = styled.h1<{ status: string }>`
     color: ${(props) => (props.status !== "Alive" ? '#F7931E' : '#0E0F3B')};
     text-align: left;
     font: calc(4px + 2.5vw) fantasy, impact, arial;
     letter-spacing: 0.05vw; //I like the font but the letter were too close together
 `;
 
-const GenderPara = styled.p`
+const GenderPara = styled.p<{ gender: string }>`
     color: ${(props) => (props.gender !== "Male" ? '#D32C98' : '#0096c7')};
 `;
 
 
-export default function RickAndMorty(props: { data: Char[] }) {
+export default function RickAndMorty(props: { data: any}) {
     return (
         <AllCharsDiv>
             {
-                props.data.map((api: Char) =>
+                props.data.map((api: any) =>
                     <SingleCharDiv key={api.id} status={api.status}>
                         <StyledImage src={api.image} alt={`image of ${api.name}`}/>
                         <CharInfo>
